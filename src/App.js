@@ -31,7 +31,7 @@ export default function App() {
 	}
 
 	return (
-		<>
+		<div className="main">
 			<h1>Star Wars Quizzical</h1>
 			{/* {{dataStatus === "loaded" && (
 				<div>
@@ -47,6 +47,6 @@ export default function App() {
 					correctAnswer={question.correctAnswer}
 				/>
 			))}
-		</>
+		</div>
 	);
 }
