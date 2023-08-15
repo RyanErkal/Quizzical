@@ -29,6 +29,18 @@ export default function App() {
 		setCurChar(data[random]);
 	}
 
+	if (curChar) {
+		let character = (
+			<div>
+				<h1>{curChar.name}</h1>
+				<h2>{curChar.height}</h2>
+				<h2>{curChar.mass}</h2>
+				<h2>{curChar.hair_color}</h2>
+				<h2>{curChar.skin_color}</h2>
+			</div>
+		);
+	}
+
 	return (
 		<>
 			<h1>Quizzical</h1>
@@ -39,7 +51,17 @@ export default function App() {
 				</div>
 			)}
 			<div>{dataStatus} data</div>
-			{curChar && <div>{curChar.name}</div>}
+			{curChar && (
+				<div>
+					<h1>{curChar.name}</h1>
+					<h2>{curChar.height}</h2>
+					<h2>{curChar.mass}</h2>
+					<h2>{curChar.hair_color}</h2>
+					<h2>{curChar.skin_color}</h2>
+					<h2>{curChar.birth_year}</h2>
+					<h2>{curChar.eye_color}</h2>
+				</div>
+			)}
 		</>
 	);
 }
