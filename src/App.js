@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import Question from "./components/Question";
 import Character from "./components/Character";
+import Questions from "./questions";
 import "./App.css";
 
 export default function App() {
-	const [start, setStart] = useState(false);
+	//const [start, setStart] = useState(false);
+	const [questionsData, setQuestionsData] = useState(Questions);
 	const [data, setData] = useState();
 	const [dataStatus, setDataStatus] = useState("not-loaded");
 	const [curChar, setCurChar] = useState();
@@ -16,7 +18,6 @@ export default function App() {
 		const data = await response.json();
 		setDataStatus("loaded");
 		setData(data.results);
-		//console.log(data.results[1]);
 	}
 
 	React.useEffect(() => {
@@ -25,22 +26,27 @@ export default function App() {
 
 	function newChar() {
 		const random = Math.floor(Math.random() * data.length);
-		//setCurChar(data[random]);
 		console.log(data[random]);
 		setCurChar(data[random]);
 	}
 
 	return (
 		<>
-			<h1>Quizzical</h1>
-			<Question question="Test Q" />
-			{dataStatus === "loaded" && (
+			<h1>Star Wars Quizzical</h1>
+			{/* {{dataStatus === "loaded" && (
 				<div>
 					<button onClick={newChar}>New Character</button>
 				</div>
 			)}
-			<div>{dataStatus} data</div>
+			<div>{dataStatus} data</div>} */}
 			{curChar && <Character character={curChar} />}
+			{questionsData.map((question) => (
+				<Question
+					question={question.question}
+					answers={question.answers}
+					correctAnswer={question.correctAnswer}
+				/>
+			))}
 		</>
 	);
 }
