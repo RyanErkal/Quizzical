@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import Question from "./Question";
+import Question from "./components/Question";
+import Character from "./components/Character";
 import "./App.css";
 
 export default function App() {
@@ -39,17 +40,7 @@ export default function App() {
 				</div>
 			)}
 			<div>{dataStatus} data</div>
-			{curChar && (
-				<div>
-					<h1>{curChar.name}</h1>
-					<h2>Height: {curChar.height}</h2>
-					<h2>Weight: {curChar.mass}</h2>
-					<h2>Birth Year: {curChar.birth_year}</h2>
-					<h2>Hair Color: {curChar.hair_color}</h2>
-					<h2>Skin Color: {curChar.skin_color}</h2>
-					<h2>Eye Color: {curChar.eye_color}</h2>
-				</div>
-			)}
+			{curChar && <Character character={curChar} />}
 		</>
 	);
 }
